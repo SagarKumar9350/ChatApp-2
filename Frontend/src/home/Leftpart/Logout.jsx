@@ -4,8 +4,7 @@ import { BiLogOutCircle } from "react-icons/bi";
 import axios from "axios";
 import Cookies from "js-cookie"
 import toast from 'react-hot-toast';
-// import { useNavigate } from "react-router-dom";
-// import Login from '../../components/Login';
+// import { useNavigate } from 'react-router-dom';
 
 
 
@@ -14,7 +13,6 @@ import toast from 'react-hot-toast';
 function Logout() {
     const [loading, setLoading ] = useState(false);
     // const navigate = useNavigate();
-    
     const handleLogout = async ()=>{
         setLoading(true);
         try{
@@ -23,8 +21,13 @@ function Logout() {
             Cookies.remove("jwt");
             setLoading(false);
             toast.success("Logged out successfully")
+            window.location.reload();
             // alert("Logged out successfully")
-            // navigate("/login");
+            // console.log(localStorage.getItem("ChatApp") == null);
+            // if(localStorage.getItem("ChatApp") == null){
+            //     navigate("/login");
+            // }
+            
         }
         catch(error){
             console.log("Error in Logout" + error);
